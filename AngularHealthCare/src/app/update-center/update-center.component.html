@@ -1,0 +1,40 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+<div class="col-md-4 offset-md-4 mt-4">
+    <form #updatedCenter='ngForm' (ngSubmit)='updateCenter(updatedCenter)'>
+        <div class="card">
+            <div class="card-body">
+                <h4>Update Center</h4>
+                <div class="form-group">
+                    <label for="centerId">center Id</label>
+                    <input type="hidden" name="centerId" id="centerId" #centerId='ngModel'
+                        [(ngModel)]='centerId1' class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="centerName">centerName</label>
+                    <input type="text" name="centerName" id="centerName" #centerName='ngModel'
+                        [(ngModel)]='centerName1' class="form-control" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$"
+                        minlength="2" maxlength="20">
+                    <div *ngIf='(centerName.dirty || centerName.touched ) && centerName.invalid'>
+                        <div class="alert alert-danger" *ngIf='centerName.errors.required'>
+                            *This field is mandatory
+                        </div>
+                        <div class="alert alert-danger" *ngIf='centerName.errors.minlength'>
+                            *minimum 2 letters are mandatory
+                        </div>
+                        <div class="alert alert-danger" *ngIf='centerName.errors.pattern'>
+                            *Only alphabets are allowed
+                            </div>
+                        </div>
+                    </div>
+                <button type="submit" class="btn btn-outline-info">
+                    Update Center</button>
+                <button type="reset" class="btn btn-outline-primary float-right">
+                    Reset
+                </button>
+
+            </div>
+        </div>
+    </form>
+</div>
+

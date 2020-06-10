@@ -1,0 +1,32 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-failure" *ngIf='failure'>{{failure}}</div>
+<div class="col-md-4 offset-4 mt-3 mb-3">
+    <input type="search" name="search" class="form-control" [(ngModel)]='search'
+        placeholder="Enter CenterID to search...">
+</div>
+<div class="container mt-3">
+    <!-- <div class="container mt-3" *ngFor='let center of centers | filterCenter: search'></div> -->
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Center Id</th>
+                    <th>Center Name</th>
+                   <th></th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let center of centers | filterCenter: search'>
+                    <td>{{center.centerId}}</td>
+                    <td>{{center.centerName}}</td>
+                    
+                    <td><button class="btn btn-outline-primary" (click) = 'updateCenter(center)'>Modify</button></td>
+                    <td><button class="btn btn-outline-danger" (click) = 'deleteCenter(center)'>Delete</button></td>
+                </tr>
+            </tbody>
+      
+        </table>
+    </div>
+    
+    
+

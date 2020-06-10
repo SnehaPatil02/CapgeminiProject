@@ -1,0 +1,65 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+<div class="col-md-4 offset-md-4 mt-4">
+    <form #approvedAppointment='ngForm' (ngSubmit)='approvedAppointment(approvedAppointment)'>
+        <div class="card">
+            <div class="card-body">
+                <h4>Approved Appointment</h4>
+                <div class="form-group">
+                    <label for="appointmentId">Appointment Id</label>
+                    <input type="hidden" name="appointmentId" id="appointmentId" #appointmentId='ngModel'
+                        [(ngModel)]='appointmentId1' class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="userId">userId</label>
+                    <input type="hidden" name="userId" id="userId" #userId='ngModel'
+                        [(ngModel)]='userId1' class="form-control" 
+                        <!-- minlength="2" maxlength="20"> -->
+                    <!-- <div *ngIf='(userId.dirty || userId.touched ) && userId.invalid'>
+                        <div class="alert alert-danger" *ngIf='userId.errors.required'>
+                            *This field is mandatory
+                        </div>
+                        <div class="alert alert-danger" *ngIf='userId.errors.minlength'>
+                            *minimum 2 letters are mandatory
+                        </div>
+                        </div> -->
+                <div class="form-group">
+                       <label for="userId">userId</label>
+                            <input type="hidden" name="userId" id="userId" #userId='ngModel'
+                                [(ngModel)]='userId1' class="form-control" 
+                </div>
+                
+             <div class="form-group">
+                <label for="userName">userName</label>
+                     <input type="hidden" name="userName" id="userName" #userName='ngModel'
+                         [(ngModel)]='userName1' class="form-control" 
+         </div>
+         <div class="form-group">
+            <label for="testName">testName</label>
+                 <input type="hidden" name="testName" id="testName" #testName='ngModel'
+                     [(ngModel)]='testName1' class="form-control" 
+     </div>
+     <div class="form-group">
+        <label for="dateTime">dateTime</label>
+             <input type="hidden" name="dateTime" id="dateTime" #dateTime='ngModel'
+                 [(ngModel)]='dateTime1' class="form-control" 
+ </div>
+ <div class="form-group">
+    <label for="status">status</label>
+         <input type="text" name="status" id="status" #status='ngModel'
+             [(ngModel)]='status1' class="form-control" 
+</div>
+                         
+                    </div>
+                <button type="submit" class="btn btn-outline-info">
+                    Update Center</button>
+                <button type="reset" class="btn btn-outline-primary float-right">
+                    Reset
+                </button>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+

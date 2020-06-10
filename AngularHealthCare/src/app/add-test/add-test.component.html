@@ -1,0 +1,69 @@
+<div class="jumbotron">
+    <div class="alert alert-success" *ngIf='success'>{{success}}</div>
+    <div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+    <div class="col-md-4 offset-md-4 mt-4">
+        <form #addedTests='ngForm' (ngSubmit)='addTest(addedTests)'>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Add Test</h4>
+    
+                    <div class="form-group">
+                        <label for="testId">Test Id</label>
+                        <input type="hidden" name="testId" id="testId" required placeholder="Enter your testId "
+                            #testId='ngModel' ngModel class="form-control" testId minlength="1" maxlength="10" pattern="[0-9]+">
+                        <div *ngIf='(testId.dirty || testId.touched) && testId.invalid'>
+                            <div class="alert alert-danger" *ngIf='testId.errors.required'>
+                                *this field is mandatory
+                            </div>
+                            <div class="alert alert-danger" *ngIf='testId.errors.pattern'>
+                                *Only numbers are allowed
+                            </div>
+                            <div class="alert alert-danger" *ngIf='testId.errors.minlength'>
+                                *minimum 1 letter is mandatory
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="testName">test Name</label>
+                        <input type="text" name="testName" id="testName" #testName='ngModel' ngModel
+                            class="form-control" required placeholder="Enter test Name" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" minlength="2" maxlength="20">
+                     <div  *ngIf='(testName.dirty || testName.touched ) && testName.invalid'>
+                            <div class="alert alert-danger" *ngIf='testName.errors.required'>
+                                *This field is mandatory
+                            </div>
+                            <div class="alert alert-danger" *ngIf='testName.errors.minlength'>
+                                *minimum 2 letters are mandatory
+                            </div>
+                            <div class="alert alert-danger" *ngIf='testName.errors.pattern'>
+                                *Only alphabets are allowed
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="centerId">centerId</label>
+                        <input type="text" name="centerId" id="centerId" #centerId='ngModel' ngModel class="form-control"
+                            required placeholder="Enter centerId" minlength="2" maxlength="40">
+                            <div *ngIf='(centerId.dirty || centerId.touched ) && centerId.invalid'>
+                                <div class="alert alert-danger" *ngIf='centerId.errors.required'>
+                                    *This field is mandatory
+                                </div>
+                                <div class="alert alert-danger" *ngIf='centerId.errors.minlength'>
+                                    *minimum 2 letters are mandatory
+                                </div>
+                            </div>
+                    </div>
+    
+                    <button  type="submit" class="btn btn-outline-info">Add
+                        Test
+                    </button>
+                    <button type="reset" class="btn btn-outline-primary float-right">
+                        Reset
+                    </button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    </div>

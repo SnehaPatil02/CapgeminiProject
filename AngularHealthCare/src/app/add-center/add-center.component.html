@@ -1,0 +1,51 @@
+<div class="jumbotron">
+    <div class="alert alert-success" *ngIf='success'>{{success}}</div>
+    <div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+    <div class="col-md-4 offset-md-4 mt-4">
+        <form #addedCenters='ngForm' (ngSubmit)='addCenter(addedCenters)'>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Add Center</h4>
+    
+                    <div class="form-group">
+                        <label for="centerId">centerId</label>
+                        <input type="text" name="centerId" id="centerId" #centerId='ngModel' ngModel class="form-control"
+                            required placeholder="Enter centerId" minlength="2" maxlength="40">
+                            <div *ngIf='(centerId.dirty || centerId.touched ) && centerId.invalid'>
+                                <div class="alert alert-danger" *ngIf='centerId.errors.required'>
+                                    *This field is mandatory
+                                </div>
+                                <div class="alert alert-danger" *ngIf='centerId.errors.minlength'>
+                                    *minimum 2 letters are mandatory
+                                </div>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="centerName">center Name</label>
+                        <input type="text" name="centerName" id="centerName" #centerName='ngModel' ngModel
+                            class="form-control" required placeholder="Enter test Name" pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$" minlength="2" maxlength="20">
+                     <div  *ngIf='(centerName.dirty || centerName.touched ) && centerName.invalid'>
+                            <div class="alert alert-danger" *ngIf='centerName.errors.required'>
+                                *This field is mandatory
+                            </div>
+                            <div class="alert alert-danger" *ngIf='centerName.errors.minlength'>
+                                *minimum 2 letters are mandatory
+                            </div>
+                            <div class="alert alert-danger" *ngIf='centerName.errors.pattern'>
+                                *Only alphabets are allowed
+                            </div>
+                        </div>
+                    </div>
+                    <button  type="submit" class="btn btn-outline-info">Add
+                        Center
+                    </button>
+                    <button type="reset" class="btn btn-outline-primary float-right">
+                        Reset
+                    </button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    </div>
+

@@ -1,0 +1,31 @@
+<div class="alert alert-success" *ngIf='success'>{{success}}</div>
+<div class="alert alert-failure" *ngIf='failure'>{{failure}}</div>
+<div class="col-md-4 offset-4 mt-3 mb-3">
+    <input type="search" name="search" class="form-control" [(ngModel)]='search'
+        placeholder="Enter CenterID to search...">
+</div>
+    <div class="container mt-3">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Test Id</th>
+                    <th>Test Name</th>
+                    <th>Center Id</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let test of tests | filterTest: search'>
+                    <td>{{test.testId}}</td>
+                    <td>{{test.testName}}</td>
+                    <td>{{test.centerId}}</td>
+                    
+                   
+                    <td><button class="btn btn-outline-primary" (click) = 'updateTest(test)'>Modify</button></td>
+                    <td><button class="btn btn-outline-danger" (click) = 'deleteTest(test)'>Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+</div>
+
+
